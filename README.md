@@ -37,13 +37,17 @@
 - 公開 Release 無須 GitHub 登入，也**不會在 APK 內放 GitHub Token**。
 - 若目前 API 回傳 404，代表尚未有公開的正式 Release；不能視為已完成更新。
 
-## 開發者發布檢查表
+## 開發者發布流程（自動上傳，人工放行）
 
-1. 私有開發 Repo 的正式版本已通過 CI、實機驗收與固定正式簽章驗證。
-2. 以正確的版本標籤建立本 Repo 的正式 GitHub Release。
-3. 上傳同一版本的 **Full＋Clean** 正式 APK，核對檔名、版本碼、套件名稱、簽章及 SHA-256。
-4. Release 填寫實際更新內容，並確認兩個 Assets 均可公開匿名下載。
-5. 使用現有正式 App 分別實測 Full→Full、Clean→Clean 的原地更新，以及收藏／歷史／離線內容保留。
-6. 驗證成功才對外宣布；發布失敗不得用 QA APK 替代。
+私有 `JackTzeng/JackSetting` 的 GitHub Actions 已具備 **跨 Repository 自動上傳程式**：
 
-**發布原則：** 本 Repo 只放正式簽章 APK 與版本資訊。初期可人工上傳；跨 Repo 自動發布待手動流程穩定再導入。
+1. 在**私有**開發 Repo 的 Actions secrets 設定一次 `JACKSETTING_PUBLIC_RELEASE_TOKEN`（fine-grained PAT：只授權 `JackTzeng/JackSettingPR`，`Contents: Read and write`）。
+2. 每次 Private `main` 正式建置成功後，自動檢查 Full/Clean 固定簽章、套件 ID 與版本碼，並在本公開 Repo 建立 **Draft Release**，上傳兩個 APK，遠端核對 SHA-256。
+3. Draft Release 尚未提供給一般使用者或 App 內 `releases/latest`。在手機實測 Full→Full、Clean→Clean、閱讀資料與離線檔案保留後，再由發行負責人按 **Publish release** 放行。
+4. 正式發布後，JackSetting App 的使用者可以使用設定頁「檢查更新 → 下載並安裝」。之後版本只要提高 `versionCode` 與 `versionName`，同一流程就能再次執行。
+
+**不需要人工下載後重新上傳 APK**。不設定跨 Repo 憑證時，私有 CI 會顯示警告並跳過公開 Draft 上傳；絕不將簽章金鑰或 GitHub Token 存進 APK。不要將 QA/Debug APK 放入此 Repo。
+
+跨 Repo 憑證設定：<https://github.com/JackTzeng/JackSetting/settings/secrets/actions>
+
+詳細發行要求：APK 必須為相同的正式簽章、更高的 Android `versionCode`，並且兩種版本的 Release 資產均經 SHA-256 確認。已正式發佈的相同版本不得被 CI 靜默覆寫。
