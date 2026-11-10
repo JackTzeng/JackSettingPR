@@ -2,12 +2,18 @@
 
 本 Repository **僅用於公開發布 JackSetting Android 正式 APK**。它不存放原始碼、簽章金鑰、私有 CI 設定或 QA 測試包。開發用 Repository `JackTzeng/JackSetting` 持續保持 **Private**。
 
-> **最新正式版：v0.9.28（已公開發布）** — [查看 Release](https://github.com/JackTzeng/JackSettingPR/releases/tag/v0.9.28)。
+> **最新正式版：v0.9.29（已公開發布）** — [查看 Release](https://github.com/JackTzeng/JackSettingPR/releases/tag/v0.9.29)。
 
 ## 直接下載
 
-- **[Full 正式 APK](https://github.com/JackTzeng/JackSettingPR/releases/download/v0.9.28/JackSetting-v0.9.28-release.apk)** — 全部五個漫畫來源
-- **[Clean 正式 APK](https://github.com/JackTzeng/JackSettingPR/releases/download/v0.9.28/JackSetting-v0.9.28-clean-release.apk)** — 漫畫集、CopyManga
+- **[Full 正式 APK](https://github.com/JackTzeng/JackSettingPR/releases/download/v0.9.29/JackSetting-v0.9.29-release.apk)** — 全部五個漫畫來源
+- **[Clean 正式 APK](https://github.com/JackTzeng/JackSettingPR/releases/download/v0.9.29/JackSetting-v0.9.29-clean-release.apk)** — 漫畫集、CopyManga
+
+### 測試 App 內一鍵更新
+
+已安裝 **v0.9.28** 的使用者不要先手動安裝 v0.9.29。請開啟 JackSetting **設定 → 應用程式更新 → 檢查更新**，確認顯示 `v0.9.29` 後按「下載並安裝」，由 Android 系統確認安裝。完成後檢查收藏、閱讀紀錄與離線資料是否保留。此實機端到端流程需由使用者手機確認。
+
+上一版：[v0.9.28 正式 Release](https://github.com/JackTzeng/JackSettingPR/releases/tag/v0.9.28)。
 
 上述檔案均已通過固定正式簽章及 SHA-256 檢查。請使用 Android 正常安裝流程，不要解除安裝已有正式版以免刪除收藏、紀錄和離線資料。
 
